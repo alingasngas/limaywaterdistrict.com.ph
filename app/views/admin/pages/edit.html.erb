@@ -1,0 +1,153 @@
+<% content_for :page_style do %>
+    <!-- Start specific page styles -->
+
+    <!-- End specific page styles -->
+<% end %>
+<% content_for :page_content do %>
+    <div class='row'>
+      <div class='col-lg-12'>
+
+        <%= generate_breadcrumbs %>
+        <div class='panel panel-primary'>
+          <div class='panel-heading'>
+
+            <%= action_name.capitalize %> <%= controller_name.capitalize.singularize %>
+          </div>
+          <div class='panel-body'>
+            <% if @page.errors.any? %>
+                <div class='alert alert-danger'>
+                  <ul>
+                    <% @page.errors.full_messages.each do |err| %>
+                        <li><%= err %></li>
+                    <% end %>
+                  </ul>
+
+                </div>
+            <% end %>
+            <%= form_for(@page, :as => :page, :validate => true, :html => { :multipart => true }, :url => admin_page_path(@page)) do |f| %>
+                <br/>
+                <div class='form-group clearfix'>
+                  <%= f.label :page_title, 'Page Title', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+
+                    <%= f.text_field :page_title, :class => 'form-control input-md  required', :placeholder => 'Page Title', :required => true %>
+
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :page_subtitle, 'Page Subtitle', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :page_subtitle, :class => 'form-control input-md', :placeholder => 'Page Subtitle' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%
+                     url = @page.page_url.split('/')
+                     if url.length == 1
+                       page_url = @page.page_url
+                     else
+                       url.shift
+                       page_url = url.join('/')
+                     end
+
+                  %>
+                  <%= f.label :page_url, 'Page Url', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :page_url, :class => 'form-control input-md', :placeholder => 'Page Url', :value => page_url %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :body, :class => 'col-md-2 control-label' %>
+                  <div class='col-md-10'>
+                    <%= f.text_area :body, :class => 'ckeditor' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :short_body, 'Short Body', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-10'>
+                    <%= f.text_area :short_body, :class => 'form-control input-md', :rows => 7, :cols => 40, :placeholder => 'Short Body' %>
+                  </div>
+                </div>
+		            <div class="form-group clearfix ">
+		              <%= f.label :meta_title, "Meta Title", :class => "col-md-2 control-label" %>
+		              <div class="col-md-8">
+		                 <%= f.text_field :meta_title, :class => "form-control input-md  required", :placeholder => "Meta Title" %>
+
+		              </div>
+		            </div>
+		            <div class="form-group clearfix">
+		              <%= f.label :meta_description, "Meta Description", :class => "col-md-2 control-label" %>
+		              <div class="col-md-10">
+		                <%= f.text_area :meta_description, :class => "form-control input-md", :rows => 7, :cols => 40, :placeholder => "Meta Description" %>
+		              </div>
+		            </div>
+                <div class='form-group clearfix hidden'>
+                  <%= f.label :page_styles, 'Page Styles', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-10'>
+                    <%= f.text_area :page_styles, :class => 'form-control input-md', :rows => 7, :cols => 40, :placeholder => 'Page Styles' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix hidden'>
+                  <%= f.label :page_scripts, 'Page Scripts', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-10'>
+                    <%= f.text_area :page_scripts, :class => 'form-control input-md', :rows => 7, :cols => 40, :placeholder => 'Page Scripts' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <% @pageSet = Page.where('activate = ? AND id <> ?', true, @page.id )%>
+                  <%= f.label :page_id, 'Parent', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-5'>
+                    <%= f.collection_select :page_id, @pageSet, :id, :page_title, {:include_blank => true}, {:class => 'form-control'} %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :publish_date, 'Publish Date', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-4'>
+                    <div class='input-group date'>
+                      <%= f.text_field :publish_date, :class => 'form-control datepicker', :placeholder => 'Publish Date' %>
+                      <span class='input-group-addon'><span class='glyphicon glyphicon-calendar'></span></span>
+                    </div>
+
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :display_order, 'Display Order', :class => 'col-md-2 control-label num' %>
+                  <div class='col-md-2'>
+                    <%= f.text_field :display_order, :class => 'form-control input-md num', :placeholder => 'Display Order' %>
+                  </div>
+                </div>
+	            <div class="form-group clearfix">
+
+	              <div class="col-md-8 col-md-offset-2">
+	                <%= f.check_box :is_full_page %> Is Full Page?
+	              </div>
+	            </div>
+                <div class='form-group clearfix'>
+
+                  <div class='col-md-8 col-md-offset-2'>
+                    <%= f.check_box :activate %> Is Published?
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+
+                  <div class='col-md-8 col-md-offset-2'>
+                    <%= f.check_box :show_in_menu %> Show in menu?
+                  </div>
+                </div>
+		            <div class="form-group clearfix">
+										<div class="col-md-8 col-md-offset-2">
+			                <%= f.check_box :is_featured %> Show in popular links in homepage?
+			              </div>
+		            </div>
+                <div class='row col-md-12'>
+                  <div class='pull-right'>
+                    <a href="<%= url_for(:controller => controller_name, :action => 'index') %>" class='btn btn-default btn-sm'>Cancel</a>
+                    <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

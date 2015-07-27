@@ -1,0 +1,48 @@
+<% content_for :page_content do %>
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Enquiry by: <%= @enquiry.name.titleize %>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                  <dl class="dl-horizontal">
+                    <dt>Name</dt>
+                    <dd><%= @enquiry.name %></dd>
+                    <dt>Email</dt>
+                    <dd><%= mail_to @enquiry.email %></dd>
+                    <dt>Message</dt>
+                    <dd><%= raw(@enquiry.message) %></dd>
+                    <dt>Sent At</dt>
+                    <dd><%= @enquiry.created_at.to_s(:long_ordinal) %></dd>
+                    <dt>IP Address</dt>
+	                  <dd><%= link_to @enquiry.ip_address %></dd>
+                    <dt>Is Replied?</dt>
+                    <dd><%= yes_or_no(@enquiry.is_replied?) %></dd>
+	                  <% if @enquiry.is_replied? %>
+                    <dt>Replied By</dt>
+                    <dd><%= @enquiry.respondent %></dd>
+                    <dt>Replied At</dt>
+                    <dd><%= @enquiry.replied_at %></dd>
+	                  <% end %>
+                  </dl>
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+    <!-- /.col-lg-12 -->
+</div>
+<div class='row col-md-12'>
+  <div class='pull-right'>
+    <a href="<%= url_for(:controller => controller_name, :action => 'index') %>" class='btn btn-default btn-sm'>Back</a>
+	  <a href="<%= url_for(:controller => controller_name, :action => 'destroy', :id => @enquiry) %>" class="btn btn-danger btn-sm" data-confirm="Are you sure you want to continue this action?" data-method="delete" title="Delete">Delete</a>
+
+  </div>
+</div>
+<% end %>

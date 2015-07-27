@@ -1,0 +1,40 @@
+<nav id="sidebar-menu" class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <!-- /input-group -->
+            </li>
+            <li id="li-main">
+                <a href="<%= admin_path %>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>
+            <li id="li-pages">
+                <a href="<%= admin_pages_path %>"><i class="fa fa-book fa-fw"></i> Pages</a>
+            </li>
+            <li id="li-news">
+                <a href="<%= admin_posts_path %>"><i class="fa fa-bookmark-o"></i> News and Updates</a>
+            </li>
+            <li id="li-banners">
+                <a href="<%= admin_banners_path %>"><i class="fa fa-flag-o"></i> Banners Management</a>
+            </li>
+						<li id="li-enquiries">
+                <a href="<%= admin_enquiries_path %>"><i class="fa fa-phone"></i> Enquiries</a>
+            </li>
+		        <li id="li-users">
+              <a href="<%= admin_users_path %>"><i class="fa fa-users fa-fw"></i> Users</a>
+            </li>
+            <li id="li-contacts">
+                <a href="<%= admin_contact_path(Contact.first) %>"><i class="fa fa-suitcase fa-fw"></i> Company</a>
+            </li>
+        </ul>
+        <!-- /#side-menu -->
+    </div>
+    <!-- /.sidebar-collapse -->
+</nav>

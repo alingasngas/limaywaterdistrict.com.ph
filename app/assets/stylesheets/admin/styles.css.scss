@@ -1,0 +1,11 @@
+#sidebar-menu li.active {
+  background: #438ac8;
+  a {
+    color:#ffffff;
+    &:hover {
+      background: #438ac8;
+      color:#ffffff;
+    }
+  }
+
+}

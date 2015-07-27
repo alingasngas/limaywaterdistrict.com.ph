@@ -1,0 +1,68 @@
+<% content_for :page_styles do  %>
+    <style type="text/css">
+        body {
+            padding-top: 51px;
+        }
+
+        .text-center {
+            padding-top: 20px;
+        }
+        .col-xs-12 {
+            background-color: #fff;
+        }
+
+        /* collapsed sidebar styles */
+        @media screen and (max-width: 767px) {
+            .row-offcanvas {
+                position: relative;
+                -webkit-transition: all 0.25s ease-out;
+                -moz-transition: all 0.25s ease-out;
+                transition: all 0.25s ease-out;
+            }
+            .row-offcanvas-right
+            .sidebar-offcanvas {
+                right: -41.6%;
+            }
+
+            .row-offcanvas-left
+            .sidebar-offcanvas {
+                left: -41.6%;
+            }
+            .row-offcanvas-right.active {
+                right: 41.6%;
+            }
+            .row-offcanvas-left.active {
+                left: 41.6%;
+            }
+            .sidebar-offcanvas {
+                position: absolute;
+                top: 0;
+                width: 41.6%;
+            }
+        }
+    </style>
+<% end %>
+<% content_for :page_content do %>
+    <div id='content-holder' class="row row-offcanvas row-offcanvas-left">
+
+      <!-- start sidebar -->
+        <%= render 'pages/sidebar' %>
+      <!-- end sidebar -->
+
+      <!-- main area -->
+      <div class="col-xs-12 col-sm-9" style="min-height:320px;">
+      	<div class="page-header">
+                <h1>
+                    <%= @page.page_title %>
+                    <% unless @page.page_subtitle.blank? %>
+                    <small><%= @page.page_subtitle %></small>
+                    <% end %>
+
+                </h1>
+                <%= render 'shared/sharing_widget' %>
+      	</div>
+            <%= raw(@page.body) %>
+
+      </div><!-- /.col-xs-12 main -->
+    </div>
+<% end %>

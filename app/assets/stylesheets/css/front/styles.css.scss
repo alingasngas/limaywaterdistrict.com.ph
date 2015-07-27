@@ -1,0 +1,364 @@
+/*
+Custom CSS for...
+'Modern Business' HTML Theme by Start Bootstrap
+
+All Start Bootstrap themes are licensed under Apache 2.0.
+For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap.com!
+*/
+
+/* Global Styles */
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v7/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v7/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v7/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Open Sans';
+    background: #f6f6f6;
+}
+
+body {
+    padding-top: 50px;
+
+}
+.img-responsive {
+    width:100%;
+}
+#main-section {
+    padding: 0 30px 20px;
+    margin-top: -20px;
+
+}
+nav.navbar{
+    border-radius: 0px;
+    margin-bottom: 0px;
+    /*height:80px;*/
+    background: #293541;
+    color: #fff;
+}
+
+nav.navbar .container{
+    /*margin-top: 15px;*/
+
+}
+#main-nav.nav.navbar-nav li a {
+    color:#fff;
+}
+#main-nav.nav.navbar-nav li.dropdown.open ul.dropdown-menu{
+    background: #222222 !important;
+}
+#main-nav.nav.navbar-nav li.dropdown.open ul.dropdown-menu li a{
+  background: #222222 !important;
+    color: #fff;
+}
+#main-nav.nav.navbar-nav li.dropdown.open ul.dropdown-menu li a:hover{
+    background: #000;
+    color: #fff;
+}
+
+
+.img-home-portfolio,
+.img-customer,
+.portfolio-item {
+    margin-bottom: 30px;
+ padding:0;
+}
+
+.tab-pane {
+    margin-top: 15px;
+}
+
+/* Page Sections */
+#page_content .breadcrumb{
+  height:40px;
+}
+
+#page_content {
+  h2 {
+    color: #696969;
+  }
+}
+.section,
+.section-colored {
+    padding: 50px 0;
+}
+
+.section-colored {
+    background-color: #d0d5d9;
+    /*background-color: #f6f6f6;*/
+    /* change this to change the background color of a colored section */
+}
+
+.sidebar {
+    margin-top: 40px;
+}
+
+.sidebar ul {
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #cccccc;
+}
+
+/* Half Page Height Carousel Customization */
+.carousel {
+    height: 350px;
+
+}
+//.item,
+//.active,
+//.carousel-inner {
+//  height: 350px;
+//}
+
+
+.fill {
+    width: 100%;
+    height: 350px;
+    background-position: center;
+    background-size: cover;
+}
+.fill img {
+    width: 100%;
+    height:350px;
+}
+
+.carousel-control {
+    height:350px;
+}
+/* Social Icons Styles */
+.list-social-icons {
+    margin-bottom: 45px;
+}
+
+.tooltip-social a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.facebook-link a:hover {
+    color: #3b5998;
+}
+
+.linkedin-link a:hover {
+    color: #007fb1;
+}
+
+.twitter-link a:hover {
+    color: #39a9e0;
+}
+
+.google-plus-link a:hover {
+    color: #d14836;
+}
+
+/* Service Page Styles */
+.service-icon {
+    font-size: 50px;
+}
+
+/* 404 Page Styles */
+.error-404 {
+    font-size: 8em;
+}
+
+/* Pricing Page Styles */
+.price {
+    font-size: 4em;
+}
+
+.price-cents {
+    vertical-align: super;
+    font-size: 50%;
+}
+
+.price-month {
+    font-size: 35%;
+    font-style: italic;
+}
+
+/* Footer Styles */
+footer {
+    margin: 30px 0;
+}
+
+img.icon {
+    width:50px;
+    height:50px;
+    display: inline;
+    margin-right: 10px;
+}
+
+h3.col-header {}
+
+.feature h3 a {
+
+    color: inherit;
+}
+.feature h3 small {
+    /*color:#;*/
+}
+
+.feature .icon {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #f3f3f3;
+    float: left;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    clear:both;
+}
+
+.feature .short-body{
+
+    width:auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    height:100px;
+    max-height:100px;
+}
+
+.feature .text {
+    margin-left: 70px;
+}
+
+#highlights-holder {
+    height: 270px;
+}
+
+#highlights-holder .article {
+  margin-left: 0px;
+  padding: 5px 10px;
+  width:100%;
+  a.h-news-link {
+    display: block;
+    font-size:14px;
+    font-weight: bold;
+  }
+  
+}
+
+.page-divider {
+  margin-top: -2px;
+//  height: 2px;
+//  background: #696969;
+//  background: -webkit-gradient(linear, 0 0, 75% 0, from(white), to(white), color-stop(75%, #696969));
+  -webkit-box-shadow: -6px 4px 6px 0px rgba(0,0,0,0.49);
+  -moz-box-shadow: -6px 4px 6px 0px rgba(0,0,0,0.49);
+  box-shadow: -6px 4px 6px 0px rgba(0,0,0,0.49);
+}
+
+.bottom-space20 {
+  margin-bottom: 20px;
+}
+
+/* Responsive Styles */
+@media only screen
+and (min-width : 320px)
+and (max-width : 480px) {
+
+  .carousel {
+    height: 180px;
+  }
+  .carousel .item {
+    height: 180px;
+  }
+  .carousel-control {
+    height: 180px;
+  }
+
+  .carousel .carousel-inner {
+    height: 100%;
+    /* increases the carousel height so it looks good on phones */
+  }
+  .fill {
+    .carousel-caption {
+      top: -40px;
+    }
+    img {
+      width: 100%;
+      height:180px;
+    }
+  }
+}
+
+@media (min-width : 481px) and (max-width: 767px) {
+
+  .carousel {
+      height: 210px;
+  }
+  .carousel .item {
+    height: 210px;
+  }
+  .carousel-control {
+    height: 210px;
+  }
+
+  .carousel .carousel-inner {
+      height: 100%;
+      /* increases the carousel height so it looks good on phones */
+  }
+  .fill {
+    .carousel-caption {
+      top: -10px;
+    }
+    img {
+      width: 100%;
+      height:210px;
+    }
+  }
+}
+/* Responsive Styles */
+@media (min-width: 768px) and (max-width: 960px) {
+   #map-canvas {
+     height:200px;
+     padding-bottom: 20px;
+   }
+    .carousel {
+        height: 260px;
+    }
+    .carousel .item {
+      height: 260px;
+    }
+    .carousel-control {
+      height: 260px;
+    }
+    .carousel .carousel-inner {
+        height: 100%;
+        /* increases the carousel height so it looks good on phones */
+    }
+    .fill img {
+        width: 100%;
+        height:260px;
+    }
+
+}
+
+/* facebook widge styles */
+.fb_iframe_widget,
+.fb_iframe_widget span,
+.fb_iframe_widget span iframe[style] {
+  min-width: 100% !important;
+  width: 100% !important;
+}
+
+.at-share-tbx-element a.at300b {
+
+}

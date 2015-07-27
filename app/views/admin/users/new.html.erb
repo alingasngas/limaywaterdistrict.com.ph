@@ -1,0 +1,142 @@
+<% content_for :page_style do %>
+    <!-- Start specific page styles -->
+
+    <!-- End specific page styles -->
+<% end %>
+<% content_for :page_content do %>
+    <div class="row">
+      <div class="col-lg-12">
+
+        <%= generate_breadcrumbs %>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <%= action_name.capitalize %> <%= controller_name.capitalize.singularize %>
+          </div>
+          <div class="panel-body">
+            <% if @user.errors.any? %>
+                <div class="alert alert-danger">
+                  <ul>
+                    <% @user.errors.full_messages.each do |err| %>
+                        <li><%= err %></li>
+                    <% end %>
+                  </ul>
+
+                </div>
+            <% end %>
+            <%= form_for(@user, :as => :user, :validate => true, :html => { :multipart => true }, :url => admin_users_path) do |f| %>
+                <br/>
+                <fieldset>
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <%= f.label :username, "Username", :class => "col-md-2 control-label" %>
+                      <div class="col-md-4">
+                        <%= f.text_field :username, :class => "form-control input-md  required", :placeholder => "Username", :required => true %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <%= f.label :first_name, "Firstname", :class => "col-md-2 control-label" %>
+                      <div class="col-md-4">
+                        <%= f.text_field :first_name, :class => "form-control input-md  required", :placeholder => "First Name", :required => true %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <%= f.label :last_name, "Last Name", :class => "col-md-2 control-label" %>
+                      <div class="col-md-4">
+                        <%= f.text_field :last_name, :class => "form-control input-md  required", :placeholder => "Last Name", :required => true %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <%= f.label :email, "Email", :class => "col-md-2 control-label" %>
+                      <div class="col-md-4">
+                        <%= f.text_field :email, :class => "form-control input-md required", :placeholder => "Email" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <%= f.label :password, "Password",  :class => "col-md-2 control-label" %>
+                      <div class="col-md-4">
+                        <%= f.password_field :password, :class => "form-control input-md", :placeholder => "Password" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <%= f.label :password_confirmation, "Password Confirmation", :class => "col-md-2 control-label" %>
+                      <div class="col-md-4">
+                        <%= f.password_field :password_confirmation, :class => "form-control input-md", :placeholder => "Password Confirmation" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <%= f.label :address, "Address", :class => "col-md-2 control-label" %>
+                      <div class="col-md-8">
+                        <%= f.text_field :address, :class => "form-control input-md", :placeholder => "Address" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <%= f.label :phone, "Phone", :class => "col-md-2 control-label" %>
+                      <div class="col-md-4">
+                        <%= f.text_field :phone, :class => "form-control input-md", :placeholder => "Phone" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <%= f.label :birthdate, "Birth Date", :class => "col-md-2 control-label" %>
+                      <div class="col-md-4">
+                        <div class='input-group date'>
+                          <%= f.text_field :birthdate, :class => "form-control datepicker", :placeholder => "Birth Date" %>
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <%= f.label :gender, "Gender", :class => "col-md-2 control-label" %>
+                      <div class="col-md-2">
+                        <%= f.select :gender, options_for_select([ "Male", "Female" ]), {:include_blank => true}, :class => "form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="form-group clearfix">
+                        <% @roles = Role.all %>
+                        <%= f.label :role_id, "Role", :class => "col-md-2 control-label" %>
+                        <div class="col-md-2">
+                          <%= f.collection_select :role_id, @roles, :id, :name, {:include_blank => true}, {:class => 'form-control'} %>
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group clearfix">
+                      <div class="col-md-8 col-md-offset-2">
+                        <%= f.check_box :status %> Is Active?
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="row col-md-12">
+                  <div class="pull-right">
+                    <a href="<%= url_for(:controller => controller_name, :action => 'index') %>" class="btn btn-default btn-sm">Cancel</a>
+                    <%= f.submit "Save", :class => "btn btn-primary btn-sm" %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

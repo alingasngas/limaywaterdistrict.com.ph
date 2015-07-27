@@ -1,0 +1,20 @@
+<% if @page %>
+<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="menu-sidebar" role="navigation">
+	<div class="list-group" id="page-sidebar" style="margin-bottom:30px;">
+	  <% if @page.has_parent? %>
+	  	  <% parent = @page.ancestors.first %>
+	  	  <% parent.pages.active.order('display_order ASC').each do |page| %>
+	  	  <%= link_to page.page_title, pages_path(page.page_url), title: page.page_title, class:  page == @page ? 'list-group-item active': 'list-group-item' %>
+		  <% end %>
+	  <% else %>
+	  	<% Page.sections.each do |page| %>
+	  	  <%= link_to page.page_title, pages_path(page.page_url), title: page.page_title, class:  page == @page ? 'list-group-item active': 'list-group-item' %>
+		<% end %>
+				<%= link_to 'Contact Us', contact_us_path, title: 'Contact Us', class:  'list-group-item' %>
+	  <% end %>
+	  
+	</div>
+	<div id="fb-sidebar-widget" class="fb-like-box" data-href="https://www.facebook.com/pages/Mariveles-Water-District/1553420708222422" data-width="100%	" data-height="" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div>
+
+</div>
+<% end %>

@@ -1,0 +1,98 @@
+<% content_for :page_styles do  %>
+    <style type="text/css">
+        body {
+            padding-top: 51px;
+        }
+
+        .text-center {
+            padding-top: 20px;
+        }
+
+        /*.short-desc {*/
+	        /*height: 100px;*/
+	        /*white-space: normal;*/
+	        /*word-wrap: break-word;*/
+	        /*overflow: hidden;*/
+	        /*text-overflow: ellipsis;*/
+        /*}*/
+        /*.col-xs-12 {*/
+            /*background-color: #fff;*/
+        /*}*/
+
+    </style>
+<% end %>
+<% content_for :page_content do %>
+<div class="row">
+  <div class="col-lg-12">
+		<h1 class="page-header">News and Updates</h1>
+	</div>
+</div>
+<% if params[:q] && params[:q].present? %>
+		<div class="row">
+			<div class="col-lg-12">
+				<p>Found <%= pluralize(@posts.count, 'post') %> with keyword <u><mark><b><%= params[:q] %></b></mark></u></p>
+			</div>
+		</div>
+<% end %>
+<div class="row">
+
+	<!-- Blog Entries Column -->
+	<div class="col-md-8">
+		<% @posts.each do |post| %>
+	  <h2>
+		  <%= link_to show_post_path(post.page_url), title: post.page_title do  %>
+		    <%= post.page_title %>
+			<% end %>
+		  <% unless post.page_subtitle.blank? %>
+				<br><small><%= post.page_subtitle %></small>
+		  <% end %>
+
+	  </h2>
+	  <% if !post.published_by.blank? %>
+	      <p>by <b><%= post.published_by %></b> on <b><%= post.publish_date.strftime('%B %d, %Y') %></b></p>
+		<% else %>
+			<p>Posted on <b><%= post.publish_date.strftime('%B %d, %Y') %></b></p>
+    <% end %>
+
+	  <hr>
+		<% if post.photo.present? %>
+			<%= link_to post.photo.url(:large), data: {toggle: 'lightbox', title: post.page_title} do  %>
+				<%= image_tag(post.photo.url, class: 'img-responsive img-hover', alt: post.page_title) %>
+			<% end %>
+		  <hr>
+		<% end %>
+	  <p class="text-overflow short-desc"><%= raw(short_description(post.body)) %></p>
+	  <%= link_to 'Read More »', show_post_path(post.page_url), title: 'Read More', class: 'btn btn-primary pull-right' %>
+		<div class="clearfix"></div>
+		<hr>
+		<% end %>
+		<% if @posts.size > 5 %>
+	  <!-- Pager -->
+	  <ul class="pager">
+	      <li class="previous">
+	          <a href="#">← Older</a>
+	      </li>
+	      <li class="next">
+	          <a href="#">Newer →</a>
+	      </li>
+	  </ul>
+		<% end %>
+	</div>
+
+  <!-- Start Blog Sidebar Widgets Column -->
+	<%= render 'shared/articles_sidebar' %>
+	<!-- End Blog Sidebar Widgets Column -->
+
+</div>
+<% end %>
+
+<% content_for :page_scripts do %>
+  <script>
+	  $(function(){
+		  paras = $('.short-desc');
+		  $.each(paras, function(i,v){
+			  $clamp(v, {clamp: 5});
+		  })
+	  });
+  </script>
+<% end %>

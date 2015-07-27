@@ -1,0 +1,101 @@
+<br/>
+<div class='form-group clearfix'>
+  <%= f.label :page_title, 'Post Title', :class => 'col-md-2 control-label' %>
+  <div class='col-md-8'>
+
+    <%= f.text_field :page_title, :class => 'form-control input-md  required', :placeholder => 'Post Title', :required => true %>
+  </div>
+</div>
+<div class='form-group clearfix'>
+  <%= f.label :page_subtitle, 'Post Subtitle', :class => 'col-md-2 control-label' %>
+  <div class='col-md-8'>
+    <%= f.text_field :page_subtitle, :class => 'form-control input-md', :placeholder => 'Post Subtitle' %>
+  </div>
+</div>
+<div class='form-group clearfix'>
+  <%= f.label :body, :class => 'col-md-2 control-label' %>
+  <div class='col-md-10'>
+    <%= f.text_area :body, :class => 'ckeditor' %>
+  </div>
+</div>
+
+<div class="form-group clearfix ">
+  <%= f.label :meta_title, "Meta Title", :class => "col-md-2 control-label" %>
+  <div class="col-md-8">
+     <%= f.text_field :meta_title, :class => "form-control input-md  required", :placeholder => "Meta Title" %>
+
+  </div>
+</div>
+<div class="form-group clearfix">
+  <%= f.label :meta_description, "Meta Description", :class => "col-md-2 control-label" %>
+  <div class="col-md-10">
+    <%= f.text_area :meta_description, :class => "form-control input-md", :rows => 7, :cols => 40, :placeholder => "Meta Description" %>
+  </div>
+</div>
+  <div class="form-group clearfix">
+    <%= f.label :photo, "Upload Cover Photo", :class => "col-md-2 control-label" %>
+      <div class="col-md-8">
+      	<div class="fileinput fileinput-new" data-provides="fileinput">
+		  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 240px;">
+		  	<%= image_tag(@post.photo.url(:thumb))%>
+		  </div>
+		  <div>
+		    <span class="btn btn-default btn-file">
+		    	<span class="fileinput-new">Select image</span>
+		    	<span class="fileinput-exists">Change</span>
+		    	<%= f.file_field :photo %>
+	    	</span>
+	    	<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+		  </div>
+		</div>
+        
+      </div>
+    
+  </div>
+<div class='form-group clearfix hidden'>
+  <%= f.label :page_styles, 'Page Styles', :class => 'col-md-2 control-label' %>
+  <div class='col-md-10'>
+    <%= f.text_area :page_styles, :class => 'form-control input-md', :rows => 7, :cols => 40, :placeholder => 'Page Styles' %>
+  </div>
+</div>
+<div class='form-group clearfix hidden'>
+  <%= f.label :page_scripts, 'Page Scripts', :class => 'col-md-2 control-label' %>
+  <div class='col-md-10'>
+    <%= f.text_area :page_scripts, :class => 'form-control input-md', :rows => 7, :cols => 40, :placeholder => 'Page Scripts' %>
+  </div>
+</div>
+<div class='form-group clearfix'>
+  <%= f.label :published_by, 'Published By', :class => 'col-md-2 control-label' %>
+  <div class='col-md-8'>
+
+    <%= f.text_field :published_by, :class => 'form-control input-md  required', :placeholder => 'Published By' %>
+  </div>
+</div>
+<div class='form-group clearfix'>
+  <%= f.label :publish_date, 'Publish Date', :class => 'col-md-2 control-label' %>
+  <div class='col-md-4'>
+    <div class='input-group date'>
+      <%= f.text_field :publish_date, :class => 'form-control datepicker', :placeholder => 'Publish Date' %>
+      <span class='input-group-addon'><span class='glyphicon glyphicon-calendar'></span></span>
+    </div>
+
+  </div>
+</div>
+<div class='form-group clearfix'>
+
+  <div class='col-md-8 col-md-offset-2'>
+    <%= f.check_box :activate %> Is Published?
+  </div>
+</div>
+<div class='form-group clearfix'>
+
+  <div class='col-md-8 col-md-offset-2'>
+    <%= f.check_box :is_featured %> Is Featured?
+  </div>
+</div>
+<div class='row col-md-12'>
+  <div class='pull-right'>
+    <a href="<%= url_for(:controller => controller_name, :action => 'index') %>" class='btn btn-default btn-sm'>Cancel</a>
+    <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
+  </div>
+</div>

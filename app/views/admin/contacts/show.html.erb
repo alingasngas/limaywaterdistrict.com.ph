@@ -1,0 +1,97 @@
+<% content_for :page_style do %>
+    <!-- Start specific page styles -->
+
+    <!-- End specific page styles -->
+<% end %>
+<% content_for :page_content do %>
+    <div class='row'>
+      <div class='col-lg-12'>
+
+        <%= generate_breadcrumbs %>
+        <div class='panel panel-primary'>
+
+          <div class='panel-heading'>
+
+            <%= action_name.capitalize %> <%= controller_name.capitalize.singularize %>
+          </div>
+          <div class='panel-body'>
+            <% if @contact.errors.any? %>
+                <div class='alert alert-danger'>
+                  <ul>
+                    <% @contact.errors.full_messages.each do |err| %>
+                        <li><%= err %></li>
+                    <% end %>
+                  </ul>
+
+                </div>
+            <% end %>
+
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td class="strong">Company</td>
+                  <td><%= @contact.company_name %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Email</td>
+                  <td><%= @contact.email %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Website</td>
+                  <td><%= @contact.website %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Phone 1</td>
+                  <td><%= @contact.phone1 %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Phone 2</td>
+                  <td><%= @contact.phone2 %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Fax</td>
+                  <td><%= @contact.fax %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Street</td>
+                  <td><%= @contact.street %></td>
+                </tr>
+                <tr>
+                  <td class="strong">City</td>
+                  <td><%= @contact.city %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Province</td>
+                  <td><%= @contact.province %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Country</td>
+                  <td><%= !@contact.country.nil? && !@contact.country.nil? ? country_name(@contact.country) : '' %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Business Hours Weekdays</td>
+                  <td><%= @contact.business_hours_weekdays %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Business Hours Saturday</td>
+                  <td><%= @contact.business_hours_saturday %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Business Hours Sunday</td>
+                  <td><%= @contact.business_hours_sunday %></td>
+                </tr>
+                <tr>
+                  <td class="strong">Logo</td>
+                  <td><%= image_tag @contact.logo.url(:original), style:"width:50px;height:60px;border:1px solid #ccc;" %></td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <hr>
+            <%= link_to 'Edit', edit_admin_contact_path(@contact), class: 'btn btn-sm btn-danger pull-right' %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

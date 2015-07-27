@@ -1,0 +1,140 @@
+<% content_for :page_style do %>
+    <!-- Start specific page styles -->
+
+    <!-- End specific page styles -->
+<% end %>
+<% content_for :page_content do %>
+    <div class='row'>
+      <div class='col-lg-12'>
+
+        <%= generate_breadcrumbs %>
+        <div class='panel panel-primary'>
+          <div class='panel-heading'>
+
+            <%= action_name.capitalize %> <%= controller_name.capitalize.singularize %>
+          </div>
+          <div class='panel-body'>
+            <% if @contact.errors.any? %>
+                <div class='alert alert-danger'>
+                  <ul>
+                    <% @contact.errors.full_messages.each do |err| %>
+                        <li><%= err %></li>
+                    <% end %>
+                  </ul>
+
+                </div>
+            <% end %>
+            <%= form_for(@contact, :as => :contact, :validate => true, :html => { :multipart => true }, :url => admin_contact_path(@contact)) do |f| %>
+                <br/>
+                <div class='form-group clearfix'>
+                  <%= f.label :company_name, 'Company Name', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+
+                    <%= f.text_field :company_name, :class => 'form-control input-md  required', :placeholder => 'Company Name', :required => true %>
+
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :email, 'Email', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :email, :class => 'form-control input-md required', :placeholder => 'Email', :required => true %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :website, 'Website', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :website, :class => 'form-control input-md', :placeholder => 'Website' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :phone1, 'Phone 1', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :phone1, :class => 'form-control input-md required', :placeholder => 'Phone 1', :required => true %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :phone2, 'Phone 2', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :phone2, :class => 'form-control input-md', :placeholder => 'Phone 2' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :fax, 'Fax', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :fax, :class => 'form-control input-md', :placeholder => 'Fax' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :street, 'Street', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :street, :class => 'form-control input-md required', :placeholder => 'Street', :required => true %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :city, 'Town/City', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :city, :class => 'form-control input-md', :placeholder => 'City' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :province, 'Province', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :province, :class => 'form-control input-md', :placeholder => 'Province' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :country, 'Country', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.country_select :country, {:include_blank => true}, :class => 'selectpicker', :placeholder => 'Country', :required => true %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :business_hours_weekdays, 'Business Hours Weekdays', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :business_hours_weekdays, :class => 'form-control input-md', :placeholder => 'Business Hours Weekdays' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :business_hours_saturday, 'Business Hours Saturday', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :business_hours_saturday, :class => 'form-control input-md', :placeholder => 'Business Hours Saturday' %>
+                  </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <%= f.label :business_hours_sunday, 'Business Hours Sunday', :class => 'col-md-2 control-label' %>
+                  <div class='col-md-8'>
+                    <%= f.text_field :business_hours_sunday, :class => 'form-control input-md', :placeholder => 'Business Hours Sunday' %>
+                  </div>
+                </div>
+                <div class="form-group clearfix">
+                  <%= f.label :logo, 'Upload Logo', :class => 'col-md-2 control-label' %>
+                  <div class="col-md-8">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                      <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 120px;">
+                        <%= image_tag(@contact.logo.url(:thumb))%>
+                      </div>
+                      <div>
+						    <span class="btn btn-default btn-file">
+						    	<span class="fileinput-new">Select image</span>
+						    	<span class="fileinput-exists">Change</span>
+                              <%= f.file_field :logo %>
+					    	</span>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class='row col-md-12'>
+                  <div class='pull-right'>
+                    <a href="<%= url_for(:controller => controller_name, :action => 'index') %>" class='btn btn-default btn-sm'>Cancel</a>
+                    <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

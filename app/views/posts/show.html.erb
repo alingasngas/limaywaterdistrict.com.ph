@@ -1,0 +1,74 @@
+<% content_for :page_styles do  %>
+    <style type="text/css">
+        body {
+            padding-top: 51px;
+        }
+
+        .text-center {
+            padding-top: 20px;
+        }
+        .at300b {
+			    width:100px;
+		    }
+
+    </style>
+<% end %>
+<% content_for :page_content do %>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header"><%= @post.page_title %>
+	        <% unless @post.page_subtitle.blank? %><br>
+				  <small><%= @post.page_subtitle %></small>
+				  <% end %>
+        </h1>
+		    <!-- Date/Time -->
+		    <% if !@post.published_by.blank? %>
+		      <p>by <b><%= @post.published_by %></b> on <b><%= @post.publish_date.strftime('%B %d, %Y') %></b></p>
+				<% else %>
+					<p>Posted on <b><%= @post.publish_date.strftime('%B %d, %Y') %></b></p>
+		    <% end %>
+    </div>
+</div>
+
+<div class="row">
+<div style="margin-left: 15px;"><%= render 'shared/sharing_widget' %></div>
+	<!-- Blog Entries Column -->
+<div class="col-md-8">
+
+    <!-- Blog Post -->
+		<hr>
+
+    <!-- Preview Image -->
+    <% if @post.photo.present? %>
+			<a href="<%= @post.photo.url(:large) %>" data-toggle="lightbox" data-title="<%= @post.page_title %>">
+				<%= image_tag(@post.photo.url(:medium), class: 'img-responsive img-hover', alt: @post.page_title) %>
+			</a>
+			<hr>
+		<% end %>
+
+
+
+    <!-- Post Content -->
+    <%= raw(@post.body) %>
+
+    <hr>
+
+
+
+</div>
+
+  <!-- Start Blog Sidebar Widgets Column -->
+	<%= render 'shared/articles_sidebar' %>
+	<!-- End Blog Sidebar Widgets Column -->
+
+</div>
+<% end %>
+
+
+<% content_for :page_scripts do %>
+	<% unless @post.page_scripts.blank? %>
+		<scipt>
+			<%= raw(@post.page_scripts) %>
+		</scipt>
+	<% end %>
+<% end %>
