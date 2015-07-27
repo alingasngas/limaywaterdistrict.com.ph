@@ -2,33 +2,46 @@
 <html lang="en">
 
 <head>
-	<title><%= @meta[:title] %></title>
-  <%= render 'shared/meta_info' %>
-  <%= csrf_meta_tags %>
-
-
-  <!-- CSS -->
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= stylesheet_link_tag 'css/bootstrap.css' %>
-  <%= stylesheet_link_tag 'font-awesome/css/font-awesome.css' %>
-  <%= stylesheet_link_tag 'css/front/styles', media: 'all' %>
+    <title><%= @meta[:title] %></title>
+    <%= render 'shared/meta_info' %>
+    <%= csrf_meta_tags %>
+    <!-- CSS -->
+    <%= stylesheet_link_tag 'application', :media => 'all' %>
   <!--page specific styles goes here -->
-  <%= yield :page_styles %>
-  <!--page specific styles ends here -->
+    <%= yield :page_styles %>
+    <!--page specific styles ends here -->
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-  <script src="js/html5shiv.js"></script>
-  <script src="js/respond.min.js"></script>
-  <![endif]-->
-	<%= favicon_link_tag 'favicon.ico', type: 'image/x-icon' %>
-
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+		<![endif]-->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	  <%= favicon_link_tag '/favicon.ico', :type => 'image/x-icon' %>
 </head>
 
 <body>
-<%= render 'shared/fb_init' %>
+	<div class="intro-header">
+      <div class="container">
+	      <%= link_to '/' do %>
+			    <%= image_tag 'front/liwad_header.png' %>
+				<% end %>
+	      <p class="pull-right" style="margin-top:15px; color:#147ec5; font-size:18px">
+          <a href="https://www.facebook.com/?q=#/pages/Limay-Water-District/1498438307085675" target="_blank"><span class="fa fa-facebook-square"></span></a>
+          <a href=""><span class="fa fa-twitter-square"></span></a>
+          <a href=""><span class="fa fa-google-plus-square"></span></a>
+          |  <strong><span class="fa fa-phone-square"></span> +63-47-244-5274</strong>
+        </p>
+      </div>
+  </div>
+<!--<#%= render 'shared/fb_init' %>-->
 <!-- start header here -->
-<%= render 'layouts/header'  %>
+<%= render 'layouts/navigation'  %>
 <!-- end header here -->
 
 <!--contents starts here -->
@@ -50,9 +63,9 @@
 <!-- footer ends here -->
 
 <!-- Scripts -->
-
 <%= javascript_include_tag 'application' %>
 <%= javascript_include_tag 'main' %>
+
 <script type="text/javascript">
     $(document).ready(function ($) {
         var articles = $('#highlights-holder').find('.article');
@@ -60,7 +73,7 @@
         $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
             event.preventDefault();
             return $(this).ekkoLightbox({
-	              always_show_close: true
+                always_show_close: true
             });
         });
     });

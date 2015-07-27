@@ -32,7 +32,7 @@ module ApplicationHelper
       elem += link_to ("#{section.page_title} <b class='caret'></b>").html_safe, "/#{section.page_url}", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'
       elem += '<ul class="dropdown-menu">'
       section.pages.active.in_menu.each do |p|
-      elem += content_tag(:li, link_to(p.page_title, pages_path(p.page_url), title: p.page_title))
+      elem += content_tag(:li, link_to(p.page_title, "/#{p.page_url}", title: p.page_title))
       end
       elem += '</ul>'
     else
