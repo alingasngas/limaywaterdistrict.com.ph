@@ -11,8 +11,8 @@ class PostsController < ApplicationController
   def set_defaults
     @banners = []
     @meta = {
-        title: 'Mariveles Water District | News and Updates',
-        description: 'Mariveles Water District | News and Updates',
+        title: 'Limay Water District | News and Updates',
+        description: 'Limay Water District | News and Updates',
         url: posts_url,
         image:  asset_url('assets/mariwad_office.jpg')
     }

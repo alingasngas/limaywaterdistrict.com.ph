@@ -46,7 +46,7 @@ class Article < Page
 
   def get_meta_info
     meta_info = {
-        title: "Mariveles Water District | #{self.page_title}",
+        title: "Limay Water District | #{self.page_title}",
         description: short_description(self.body, 200),
         url: "#{Rails.application.routes.default_url_options[:host]}/articles/#{self.page_url}"
     }

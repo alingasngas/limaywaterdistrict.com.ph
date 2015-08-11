@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_action :set_default_meta
 
   def set_default_meta
-    meta_title = "Mariveles Water District}"
+    meta_title = "Limay Water District}"
     @meta = { title: meta_title, description: '', url: Rails.application.routes.default_url_options[:host] }
   end
 
@@ -17,7 +17,7 @@ class PagesController < ApplicationController
       end
     end
     if @page
-    meta_title = "Mariveles Water District - #{@page.meta_title.blank? ? @page.page_title : @page.meta_title}"
+    meta_title = "Limay Water District - #{@page.meta_title.blank? ? @page.page_title : @page.meta_title}"
     @meta = { title: meta_title, description: @page.meta_description.blank? ?  '' : @page.meta_description, url: "#{Rails.application.routes.default_url_options[:host]}/#{@page.page_url}" }
     end
 
@@ -32,7 +32,7 @@ class PagesController < ApplicationController
     @enquiry = Enquiry.new
     unless @page.nil?
       @banners = @page.banners
-      meta_title = "Mariveles Water District - #{@page.meta_title.blank? ? @page.page_title : @page.meta_title}"
+      meta_title = "Limay Water District - #{@page.meta_title.blank? ? @page.page_title : @page.meta_title}"
       @meta = { title: meta_title, description: @page.meta_description ? @page.meta_description : '', url: "#{Rails.application.routes.default_url_options[:host]}/#{@page.page_url}" }
     end
   end
@@ -52,7 +52,7 @@ class PagesController < ApplicationController
       @contact = Contact.first
       unless @page.nil?
         @banners = @page.banners
-        meta_title = "Mariveles Water District - #{@page.meta_title.blank? ? @page.page_title : @page.meta_title}"
+        meta_title = "Limay Water District - #{@page.meta_title.blank? ? @page.page_title : @page.meta_title}"
         @meta = { title: meta_title, description: @page.meta_description ? @page.meta_description : '', url: "#{Rails.application.routes.default_url_options[:host]}/#{@page.page_url}" }
       end
       render action: 'contacts'

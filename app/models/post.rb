@@ -47,7 +47,7 @@ class Post < Page
 
   def get_meta_info
     meta_info = {
-        title: "Mariveles Water District | #{self.page_title}",
+        title: "Limay Water District | #{self.page_title}",
         description: short_description(self.body, 200),
         url: Rails.application.routes.url_helpers.show_post_url(self.page_url)
     }
