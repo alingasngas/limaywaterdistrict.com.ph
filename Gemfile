@@ -16,6 +16,7 @@ gem 'figaro'
 gem 'exception_notification'
 gem 'kaminari'
 gem 'responders', '~> 2.0'
+gem 'font-awesome-rails'
 group :development do
   gem 'mysql2'
 end
