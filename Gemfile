@@ -15,6 +15,7 @@ gem 'figaro'
 # Use sqlite3 as the database for Active Record
 gem 'exception_notification'
 gem 'kaminari'
+gem 'responders', '~> 2.0'
 group :development do
   gem 'mysql2'
 end
