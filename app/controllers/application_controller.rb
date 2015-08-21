@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
   def set_required
     @contact = Contact.first
     @latest_posts = Post.active.order('publish_date DESC').limit(7)
-    @popular = Page.active.where(is_featured: true, is_root: false, is_contact: false).order('RAND()').limit(7)
+    @popular = Page.active.where(is_featured: true, is_root: false, is_contact: false).order('page_title').sample(7)
     if @popular.empty?
-      @popular = Page.active.where(is_root: false, is_contact: false).order('RAND()').limit(7)
+      @popular = Page.active.where(is_root: false, is_contact: false).order('page_title').sample(7)
     end
     @featured_articles = Post.active.featured.order('publish_date DESC').limit(3)
     if @featured_articles.empty?

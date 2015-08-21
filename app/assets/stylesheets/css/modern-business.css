@@ -138,7 +138,7 @@ footer {
 
 .content2 {
 	height:auto;
-	padding:7px;
+	padding:15px;
 	background: #0099ff;
 	font-family:"Ubuntu", Gadget, sans-serif
 }
@@ -149,6 +149,16 @@ footer {
 	font-family:"Play", Verdana, Geneva, sans-serif;
 	color:#fff;
 	margin-bottom:0px;
+}
+
+.featured_content {
+    height:auto;
+    padding-top: 35px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    background: #faf9f9;
+    font-family:"Ubuntu", Gadget, sans-serif    
 }
 
 .transition-timer-carousel .carousel-caption {
