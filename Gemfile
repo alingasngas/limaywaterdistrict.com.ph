@@ -18,7 +18,8 @@ gem 'kaminari'
 gem 'responders', '~> 2.0'
 gem 'font-awesome-rails'
 group :development do
-  gem 'mysql2'
+ # gem 'mysql2'
+  gem 'sqlite3'
 end
 
 group :production do
