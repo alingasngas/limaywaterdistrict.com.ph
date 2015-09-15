@@ -1,41 +1,45 @@
 <% if @banners.any? %>
-<div class="container">
-    <div class="row">
-        <!-- The carousel -->
-        <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
-			<!-- Indicators -->
-	        <% if @banners.size > 1 %>
-					<ol class="carousel-indicators">
-						<% @banners.each_with_index do |banner, index|%>
-						<li data-target="#transition-timer-carousel" data-slide-to="<%= index.to_s %>" <% if banner == @banners.first %>class="active"<% end %>></li>
-						<% end %>
-					</ol>
-	        <% end %>
+<div id="myCarousel" class="carousel slide">
 
-			<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-				    <% @banners.each_with_index do |item, index|%>
-						  <div class="item <% if @banners.first == item %>active<% end %>">
-						    <div class="fill" style="">
-						      <img src="<%= item.banner.url(:original) %>"/>
-						    </div>
-						  </div>
-						<% end %>
+  <!-- Indicators -->
+  <% if @banners.size > 1 %>
+  <ol class="carousel-indicators">
+    <% @banners.each_with_index do |banner, index|%>
+        <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>" <% if banner == @banners.first %>class="active"<% end %>></li>
+    <% end %>
+  </ol>
+  <% end %>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <% @banners.each_with_index do |item, index|%>
+        <div class="item <% if @banners.first == item %>active<% end %>">
+          <div class="fill" style="">
+            <img src="<%= item.banner.url(:large) %>"/>
+          </div>
+          <div class="carousel-caption" style="position:absolute;top:30px;">
+            <div class="carousel-text">
+              <% unless item.title.nil? %><h1 class="animated fadeInDownBig"><%= item.title %></h1><% end %>
+              <% unless item.caption.nil? %>
+                  <ul class="list-unstyled carousel-list">
+                    <li class="animated bounceInLeft" style="padding:10px;"><span style=""><%= item.caption %></span></li>
+                  </ul>
+              <% end %>
+            </div>
           </div>
 
-      <% if @banners.size > 1 %>
-			<!-- Controls -->
-			<a class="left carousel-control" href="#transition-timer-carousel" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a class="right carousel-control" href="#transition-timer-carousel" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
-      <% end %>
-            
-      <!-- Timer "progress bar" -->
-      <hr class="transition-timer-carousel-progress-bar animate" />
-		</div>
+        </div>
+    <% end %>
   </div>
+
+  <!-- Controls -->
+  <% if @banners.size > 1 %>
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  <% end %>
+
 </div>
 <% end %>
